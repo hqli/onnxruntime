@@ -1,5 +1,7 @@
 jobs:
 - job: Windows_CI_Dev
+  variables:
+    buildDirectory: '$(Build.BinariesDirectory)'
   steps:
     - template: templates/set-test-data-variables-step.yml
     - task: NuGetCommand@2

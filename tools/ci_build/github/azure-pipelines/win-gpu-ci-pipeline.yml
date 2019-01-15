@@ -1,6 +1,7 @@
 jobs:
 - job: Windows_CI_GPU_Dev
   variables:
+    buildDirectory: '$(Build.BinariesDirectory)'
     CUDA_VERSION: '10.0'
   steps:
     - template: templates/set-test-data-variables-step.yml
