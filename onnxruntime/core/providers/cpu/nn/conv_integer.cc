@@ -9,7 +9,12 @@
 #include "core/providers/cpu/nn/conv_integer.h"
 #include "core/util/math.h"
 #include "core/util/math_cpuonly.h"
+#ifdef __GNUC__
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wignored-attributes"
 #include "public/gemmlowp.h"
+#endif
 
 namespace onnxruntime {
 namespace contrib {
@@ -146,5 +151,5 @@ ONNX_OPERATOR_KERNEL_EX(
 	.TypeConstraint("T2", DataTypeImpl::GetTensorType<uint8_t>())
 	.TypeConstraint("T3", DataTypeImpl::GetTensorType<int32_t>()),
     ConvInteger);
-}
+}  // namespace contrib
 }  // namespace onnxruntime
