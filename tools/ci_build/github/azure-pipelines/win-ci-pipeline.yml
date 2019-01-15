@@ -75,6 +75,8 @@ jobs:
         restoreNugetPackages: false
         msbuildArchitecture: 'x64'
         workingFolder: '$(Build.SourcesDirectory)\csharp'
+        msbuildArgs: '/m /p:OnnxRuntimeBuildDirectory=$(Build.BinariesDirectory)'
+
     - task: VSBuild@1
       displayName: 'Build Release'
       inputs:
@@ -101,6 +103,7 @@ jobs:
         msbuildArchitecture: 'x64'
         restoreNugetPackages: false
         workingFolder: '$(Build.SourcesDirectory)\csharp'
+        msbuildArgs: '/m /p:OnnxRuntimeBuildDirectory=$(Build.BinariesDirectory)'
 
     - task: PublishTestResults@2
       displayName: 'Publish unit test results'

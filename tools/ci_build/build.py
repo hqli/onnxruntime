@@ -148,6 +148,7 @@ def run_subprocess(args, cwd=None, capture=False, dll_path=None, shell=False):
                 my_env["LD_LIBRARY_PATH"] = dll_path
 
     stdout, stderr = (subprocess.PIPE, subprocess.STDOUT) if capture else (None, None)
+    print(my_env)
     return subprocess.run(args, cwd=cwd, check=True, stdout=stdout, stderr=stderr, env=my_env, shell=shell)
 
 def update_submodules(source_dir):
@@ -537,7 +538,7 @@ def main():
           if (args.x86):
             cmake_extra_args = ['-A','Win32','-G', 'Visual Studio 15 2017']
           else:
-            toolset = 'host=x64'
+            toolset = 'host=x64,cuda=10.0'
             if (args.msvc_toolset):
                 toolset += ',version=' + args.msvc_toolset
 
